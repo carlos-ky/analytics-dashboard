@@ -16,10 +16,13 @@ export default function Layout({ children }: { children: ReactNode }) {
   return (
     <div className="min-h-screen bg-gray-100 flex">
       {/* Sidebar */}
-      <aside className="w-64 bg-white shadow-md flex flex-col">
-        <div className="p-6 border-b">
-          <h1 className="text-xl font-bold text-gray-900">Analytics</h1>
-          <p className="text-xs text-gray-500 mt-1">Dashboard</p>
+      <aside className="w-20 md:w-64 bg-white shadow-md flex flex-col">
+        <div className="p-4 md:p-6 border-b">
+          <h1 className="text-xl font-bold text-gray-900">
+            <span className="md:hidden">A</span>
+            <span className="hidden md:inline">Analytics</span>
+          </h1>
+          <p className="text-xs text-gray-500 mt-1 hidden md:block">Dashboard</p>
         </div>
 
         <nav className="flex-1 p-4">
@@ -36,19 +39,18 @@ export default function Layout({ children }: { children: ReactNode }) {
                 }`}
               >
                 <span>{item.icon}</span>
-                <span>{item.label}</span>
+                <span className="hidden md:inline">{item.label}</span>
               </Link>
             )
           })}
         </nav>
 
         <div className="p-4 border-t">
-          <p className="text-sm text-gray-600 truncate mb-2">{user?.email}</p>
-          <button
-            onClick={signOut}
-            className="w-full bg-red-600 text-white py-2 rounded-md hover:bg-red-700 transition text-sm"
-          >
-            Déconnexion
+          <p className="text-sm text-gray-600 truncate mb-2 hidden md:block">{user?.email}</p>
+          <button onClick={signOut}
+            className="w-full bg-red-600 text-white py-2 rounded-md hover:bg-red-700 transition text-sm">
+            <span className="md:hidden">↩</span>
+            <span className="hidden md:inline">Déconnexion</span>
           </button>
         </div>
       </aside>
